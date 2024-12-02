@@ -5,3 +5,5 @@ nach Benutzung immer ausloggen!
 
 CT-Analyzer (Bruker) ist in C:\Skyscan\CTAn
 Bedienungsanleitung ist in C:\Skyscan\Manuals\ctan manual 1.19
+
+Statt "bone ASBMR" "General scientific" wählen
