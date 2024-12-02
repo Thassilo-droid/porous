@@ -6,4 +6,12 @@ nach Benutzung immer ausloggen!
 CT-Analyzer (Bruker) ist in C:\Skyscan\CTAn
 Bedienungsanleitung ist in C:\Skyscan\Manuals\ctan manual 1.19
 
+CT-Analyzer Notizen:
+Um Funktionen wie Plugins zu nutzen, wenn .png-Datensatz importiert wird
+-> File/Preferences/General/RGB to gray -> Luminance (musste ich am Anfang machen, sonst konnten nicht alle Funktionen genutzt werden (mir wurden kaum Funktionen angezeigt))
+
+Für die Analyse:
+Bei Plugins -> Thresholding -> 3D analysis
+
 Statt "bone ASBMR" "General scientific" wählen
+ 
