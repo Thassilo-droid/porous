@@ -1,0 +1,7 @@
+Remote-Desktop Verbindung auf:
+131.188.235.136 (mit IdM-Kennung einloggen)
+PC ist Dienstags gesperrt,
+nach Benutzung immer ausloggen!
+
+CT-Analyzer (Bruker) ist in C:\Skyscan\CTAn
+Bedienungsanleitung ist in C:\Skyscan\Manuals\ctan manual 1.19

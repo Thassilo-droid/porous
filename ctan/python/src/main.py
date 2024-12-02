@@ -42,13 +42,14 @@ with open("non_inverted_TbTh.txt", "r") as file:
         y_non_inverted_TbTh.append(float(parts[3]))
 
 
-# Plotting (inverted)
+# Plotting (inverted) no bar plot
+'''
 plt.figure(figsize=(10, 6))  # Set the figure size
-#plt.plot(x_inverted_TbTh, y_inverted_TbTh, marker='o', linestyle='-', color='b', label="Data Points")  # Line plot with markers
-plt.errorbar(
-    x_inverted_TbTh, y_inverted_TbTh, 
-    xerr=x_err_inverted, fmt='o', linestyle='-', color='b', label="Data Points"
-)  # Plot with x-error bars
+plt.plot(x_inverted_TbTh, y_inverted_TbTh, marker='o', linestyle='-', color='b', label="Data Points")  # Line plot with markers
+#plt.errorbar(
+#    x_inverted_TbTh, y_inverted_TbTh, 
+#    xerr=x_err_inverted, fmt='o', linestyle='-', color='b', label="Data Points"
+#)  # Plot with x-error bars
 plt.title("Plot of Extracted Data", fontsize=14)  # Add title
 plt.xlabel("Mid-range [pixel]", fontsize=12)  # X-axis label
 plt.ylabel("Percent Volume in range [%]", fontsize=12)  # Y-axis label
@@ -56,10 +57,23 @@ plt.grid(True)  # Add grid
 plt.legend()  # Add legend
 plt.tight_layout()  # Adjust layout
 plt.show()  # Display the plot
-
-
 '''
-# Plotting (non_inverted)
+
+# Plotting (inverted) as bar plot
+
+plt.figure(figsize=(10, 6)) # Add title
+plt.bar(x_inverted_TbTh, y_inverted_TbTh, color='b', label="Data Points", alpha=0.7) # X-axis label
+plt.title("Barplot of pore size", fontsize=14)  # Add title
+plt.xlabel("Mid-range [pixel]", fontsize=12)  # X-axis label
+plt.ylabel("Percent Volume in range [%]", fontsize=12)  # Y-axis label
+plt.grid(axis='y', linestyle='--', alpha=0.7)  # Horizontale Linien für bessere Lesbarkeit
+plt.legend()  # Add legend
+plt.tight_layout()  # Adjust layout
+plt.show()  # Display the plot
+
+
+# Plotting (non_inverted) no bar plot
+'''
 plt.figure(figsize=(10, 6)) # Set the figure size
 #plt.plot(x_non_inverted_TbTh, y_non_inverted_TbTh, marker='o', linestyle='-', color='b', label="Data Points")  # Line plot with markers
 plt.errorbar(
@@ -73,4 +87,17 @@ plt.grid(True)  # Add grid
 plt.legend()  # Add legend
 plt.tight_layout()  # Adjust layout
 plt.show()  # Display the plot)
+'''
+
+# Plotting (non_inverted) as bar plot
+'''
+plt.figure(figsize=(10, 6)) # Add title
+plt.bar(x_non_inverted_TbTh, y_non_inverted_TbTh, color='b', label="Data Points", alpha=0.7) # X-axis label
+plt.title("Barplot of strut width", fontsize=14)  # Add title
+plt.xlabel("Mid-range [pixel]", fontsize=12)  # X-axis label
+plt.ylabel("Percent Volume in range [%]", fontsize=12)  # Y-axis label
+plt.grid(axis='y', linestyle='--', alpha=0.7)  # Horizontale Linien für bessere Lesbarkeit
+plt.legend()  # Add legend
+plt.tight_layout()  # Adjust layout
+plt.show()  # Display the plot
 '''
