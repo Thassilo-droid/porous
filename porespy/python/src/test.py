@@ -5,7 +5,7 @@ from skimage.io import imread
 import matplotlib.pyplot as plt
 
 # Path to original image
-image_path = r'..\\non_inverted\\30ppi__rec_voi_1642.png'
+image_path = r'..\\..\\daten\\30ppi__rec_voi_1642.png'
 
 # Set image to original image
 image = imread(os.path.join(image_path))
