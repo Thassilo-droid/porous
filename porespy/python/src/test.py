@@ -16,6 +16,7 @@ binary_image = image < 0.5
 # Filter binar_image with ps.filters.porosimetry filter
 filtered_image = ps.filters.porosimetry(binary_image)
 
+
 # Calculate poresize distribution with ps.metrics.pore_size_distribution (with log = False); bins = 100 (intervals of datapoints taken)
 data = ps.metrics.pore_size_distribution(im=filtered_image, log=False, bins = 500)
 
