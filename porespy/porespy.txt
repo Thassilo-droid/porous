@@ -1,0 +1,5 @@
+Funtion local_thickness return array und dieses array enthält nicht die Werte, die in CTan vorkommen (z.B. Porenradius von 58 000)
+
+Wie ist die Erkenntnis zu bewerten (local_thickness verstehen (wieso so viele identische Werte))
+
+bins in histogramm: (höchster Wert in array - niedrigster Wert in array)/Anzahl_bins = Definitionsbereich der bins
