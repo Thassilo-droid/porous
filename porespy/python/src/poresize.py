@@ -30,7 +30,7 @@ def load_image_to_array(folder_path):
     return np.array(images)
 
 
-dataset_path = r'..\\non_inverted'
+dataset_path = r'..\\non_inverted' # Choose the correct path to dataset (Folder with .pngs)
 
 # Load the dataset into a 3D numpy array
 image_stack = load_image_to_array(dataset_path)
