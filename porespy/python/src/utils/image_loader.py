@@ -3,7 +3,7 @@ import numpy as np
 from skimage.io import imread
 from skimage.color import rgb2gray
 
-def load_image_to_array(folder_path):
+def load_image_to_array(folder_path, inverter = False):
 
     # Sortierte List der .pngs aus dem Ordner
     file_list = sorted([f for f in os.listdir(folder_path) if f.endswith('.png')])
@@ -21,7 +21,10 @@ def load_image_to_array(folder_path):
             image = rgb2gray(image)
 
         # Schwellenwert setzen um Bild zu binärisieren
-        binary_image = image < 0.5
+        if inverter == True:
+            binary_image = image > 0.5 # Wahr und Falsch werden vertauscht. Schwarz wird Wahr und Weiß wird Falsch
+        else:
+            binary_image = image < 0.5 # Schwarz wird Falsch und Weiß wird Wahr
 
         # Binärisierte Bilder zu images[] Liste hinzufügen
         images.append(binary_image)

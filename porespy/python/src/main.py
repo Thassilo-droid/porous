@@ -2,9 +2,15 @@ from analysis import calculate_porosity, calculate_pore_size_distribution, calcu
 
 def main():
 
-    porosity = calculate_porosity("V:\\Horn, Thassilo\\BA\\Daten\\Datensatz_PU-Schaum_30ppi\\non_inverted")
+    #dataset_path = "V:\\Horn, Thassilo\\BA\\Daten\\Datensatz_PU-Schaum_30ppi\\non_inverted" # Uni
+    dataset_path = "C:\\Users\\thass\\Desktop\\Daten\\Datensatz_PU-Schaum_30ppi\\non_inverted" # Privat
+
+    porosity = calculate_porosity(dataset_path)
 
     print(porosity)
+
+
+    calculate_pore_size_distribution(dataset_path)
 
     return 0
 
