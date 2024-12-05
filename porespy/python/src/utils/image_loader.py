@@ -20,7 +20,7 @@ def load_image_to_array(folder_path):
         if image.ndim == 3 and image.shape[-1] == 3:
             image = rgb2gray(image)
 
-        # Schwellenwert setzen um Bild zu biärisieren
+        # Schwellenwert setzen um Bild zu binärisieren
         binary_image = image < 0.5
 
         # Binärisierte Bilder zu images[] Liste hinzufügen

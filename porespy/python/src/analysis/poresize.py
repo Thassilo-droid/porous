@@ -21,8 +21,8 @@ def calculate_pore_size_distribution(dataset_path):
     relative_frequencies = counts / total_count
 
     # Ergebnisse in Listen speichern
-    pore_diameter = (unique_values*2).tolist()
-    percentage = (relative_frequencies*100).tolist()
+    pore_diameter = (unique_values*2).tolist() # Porendurchmesser = 2 * Porenradius
+    percentage = (relative_frequencies*100).tolist() # Prozentsatz berechnen
 
     # Porendurchmesser und prozentualer Anteil als Rückgabewert setzen
     return pore_diameter, percentage
