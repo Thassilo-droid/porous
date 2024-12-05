@@ -29,8 +29,58 @@ def load_image_to_array(folder_path):
     
     return np.array(images)
 
-dataset_path = "C:\\Users\\thass\\Desktop\\non_inverted"
+dataset_path = "C:\\Users\\thass\\Desktop\\Daten\\Datensatz_PU-Schaum_30ppi\\non_inverted"
+
+# Load the dataset into a 3D numpy array
+image_stack = load_image_to_array(dataset_path)
+
+# Filter image with porespy.filters
+im = ps.filters.local_thickness(image_stack)
+
+radii = im[im > 0].flatten()  # Alle Werte in einer 1D-Liste
+
+# Sort and count unique values in radii array
+unique_values, counts = np.unique(radii, return_counts=True)
+
+# Calculate relative number
+total_count = len(radii)
+relative_frequencies = counts / total_count
+
+# Save results in x and y list
+x = unique_values.tolist() # List of unique values
+y = relative_frequencies.tolist() # List of relative number
+
+y_p =[]
+
+for el in y:
+    y_p.append(el*100) 
+
+print(x)
+print("------------------------")
+print(y)
+
+print(f"radii.shape:{radii.shape}")
+print(f"radii.type:{type(radii)}")
+
+print(radii)
+
+plt.subplot(1,2,1)
+plt.hist(radii, bins=75, density=True, edgecolor='black')  # Bins einstellen
+plt.xlabel('Porenradius (Pixel)')
+plt.ylabel('Wahrscheinlichkeit')
+plt.title('Histogramm der Porenradien (in Pixeln)')
+
+
+plt.subplot(1,2,2)
+plt.figure(figsize=(10, 6))
+plt.bar(x, y, width = 0.4, color = 'b', label = "Data Points", alpha = 0.7)
+plt.title("Barplot of pore size", fontsize = 14)
+plt.xlabel("Pore radius [pixel]")
+plt.ylabel("Percent Volume in range [%]")
+plt.grid(axis = 'y', linestyle = '--', alpha = 0.7)
+plt.legend()
 
 
 
-
+plt.tight_layout()
+plt.show()
