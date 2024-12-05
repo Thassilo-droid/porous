@@ -29,7 +29,8 @@ def load_image_to_array(folder_path):
     
     return np.array(images)
 
-dataset_path = "C:\\Users\\thass\\Desktop\\Daten\\Datensatz_PU-Schaum_30ppi\\non_inverted"
+#dataset_path = "C:\\Users\\thass\\Desktop\\Daten\\Datensatz_PU-Schaum_30ppi\\non_inverted"
+dataset_path = "V:\\Horn, Thassilo\\BA\\Daten\\Datensatz_PU-Schaum_30ppi\\non_inverted"
 
 # Load the dataset into a 3D numpy array
 image_stack = load_image_to_array(dataset_path)

@@ -38,7 +38,6 @@ a = np.array([])
 
 c = 0
 
-
 for i in range(len(radii)):
     if radii[i] >= 1 and radii[i] <= 5:
         c+=1
