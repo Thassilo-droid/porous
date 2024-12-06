@@ -24,21 +24,28 @@ def calculate_pore_size_distribution(dataset_path):
     # Ergebnisse in Listen speichern
     pore_diameter = (unique_values*2).tolist() # Porendurchmesser = 2 * Porenradius
     percentage = (relative_frequencies*100).tolist() # Prozentsatz berechnen
+
+    # Dateinamen aus dataset_path generieren
+    path_parts = os.path.normpath(dataset_path).split(os.sep)  # Pfadteile extrahieren
+    if len(path_parts) >= 2:
+        dataset_name = f"{path_parts[-2]}_{path_parts[-1]}"  # Vorletzter und letzter Teil kombinieren
+    else:
+        dataset_name = path_parts[-1]  # Fallback, falls Pfad kürzer ist
+    file_name = f"{dataset_name}_pore_size_distribution.txt"  # Dynamischer Dateiname
     
-    # Pfad zur Ausgabedatei
-    output_file = os.path.join("..\\..\\..\\output_data", "pore_size_distribution.txt")
+    # Pfad zu output_data (relativ zur Projektstruktur)
+    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
+    output_dir = os.path.join(project_root, "output_data")
+    os.makedirs(output_dir, exist_ok=True)  # Ordner erstellen, falls er nicht existiert
+    output_file = os.path.join(output_dir, file_name)
 
     # Ergebnisse in Datei schreiben
     with open(output_file, "w") as f:
         f.write("Pore Diameter (pixels)\tPercentage (%)\n")
         f.write("--------------------------------------\n")
         for diameter, probability in zip(pore_diameter, percentage):
-            f.write(f"{diameter}\t{percentage:.2f}\n")
+            f.write(f"{diameter}\t{probability:.2f}\n")
 
-
-
-    # Porendurchmesser und prozentualer Anteil als Rückgabewert setzen
-    #return pore_diameter, percentage
-
-    # output_file als Rückgabewert setzen
+    # Rückgabewert: Pfad zur gespeicherten Datei
     return output_file
+    
