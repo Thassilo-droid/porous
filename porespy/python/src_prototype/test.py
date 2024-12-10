@@ -29,14 +29,20 @@ def load_image_to_array(folder_path):
     
     return np.array(images)
 
-#dataset_path = "C:\\Users\\thass\\Desktop\\Daten\\Datensatz_PU-Schaum_30ppi\\non_inverted"
-dataset_path = "V:\\Horn, Thassilo\\BA\\Daten\\Datensatz_PU-Schaum_30ppi\\non_inverted"
+dataset_path = "V:\\Horn, Thassilo\\BA\\Daten\\Datensatz_PU-Schaum_30ppi\\non_inverted" # Uni
+#dataset_path = "C:\\Users\\thass\\Desktop\\Daten\\Datensatz_PU-Schaum_30ppi\\non_inverted" # Privat
 
 # Load the dataset into a 3D numpy array
 image_stack = load_image_to_array(dataset_path)
 
+size_list = []
+for i in range (1, 101):
+    size_list.append(i)
+
+print(size_list)
+
 # Filter image with porespy.filters
-im = ps.filters.local_thickness(image_stack)
+im = ps.filters.local_thickness(image_stack, sizes = size_list)
 
 radii = im[im > 0].flatten()  # Alle Werte in einer 1D-Liste
 
@@ -51,37 +57,34 @@ relative_frequencies = counts / total_count
 x = unique_values.tolist() # List of unique values
 y = relative_frequencies.tolist() # List of relative number
 
-y_p =[]
+x_d = [] # Durchmesser = 2 * Radius
+y_p =[] # Für Prozent Anteil * 100
+
+
+for el in x:
+    x_d.append(el*2)
 
 for el in y:
     y_p.append(el*100) 
 
+
 print(x)
-print("------------------------")
-print(y)
+print("------------------------------------------------------------------------------------------------------------------------")
+print(y_p)
+print("------------------------------------------------------------------------------------------------------------------------")
 
-print(f"radii.shape:{radii.shape}")
-print(f"radii.type:{type(radii)}")
-
-print(radii)
-
-plt.subplot(1,2,1)
-plt.hist(radii, bins=75, density=True, edgecolor='black')  # Bins einstellen
-plt.xlabel('Porenradius (Pixel)')
-plt.ylabel('Wahrscheinlichkeit')
-plt.title('Histogramm der Porenradien (in Pixeln)')
+outputfile = "test_output.txt"
+with open(outputfile, "w") as f:
+    for diameter, probability in zip(x_d, y_p):
+            f.write(f"{diameter}\t{probability:.2f}\n")
 
 
-plt.subplot(1,2,2)
-plt.figure(figsize=(10, 6))
-plt.bar(x, y, width = 0.4, color = 'b', label = "Data Points", alpha = 0.7)
-plt.title("Barplot of pore size", fontsize = 14)
-plt.xlabel("Pore radius [pixel]")
-plt.ylabel("Percent Volume in range [%]")
-plt.grid(axis = 'y', linestyle = '--', alpha = 0.7)
-plt.legend()
+plt.bar(x_d, y_p, color="green")
 
-
-
-plt.tight_layout()
+plt.title("Barplot of poresize", fontsize=20)
+plt.xlabel("Pore Diameter [pixel]", fontsize=18)  # X-axis label
+plt.ylabel("Percentage [%]", fontsize=18)  # Y-axis label
+plt.grid(axis='y', linestyle='--')  # Horizontale Linien für bessere Lesbarkeit
+plt.legend(fontsize = 18)  # Add legend
+plt.tight_layout()  # Adjust layout
 plt.show()

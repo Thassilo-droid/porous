@@ -5,3 +5,5 @@ Wie ist die Erkenntnis zu bewerten (local_thickness verstehen (wieso so viele id
 bins in plt.histogramm: (höchster Wert in array - niedrigster Wert in array)/Anzahl_bins = Definitionsbereich der bins
 
 -> Histogram ist stand jetzt ungenauer als bei CTan (weniger genau bei hohen Porengrößen) -> Für welche Anforderungen ist es geeignet ungeeignet
+
+Interessanter Forumbeitrag zur ps.filters.local_thickness() Funktion: https://github.com/PMEAL/porespy/discussions/657

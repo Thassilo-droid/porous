@@ -75,7 +75,8 @@ y_strutwidth_fiji_fit = np.polyval(p_strutwidth_fiji, x_strutwidth_fiji_fit)
 
 x_poresize_porespy = []
 y_poresize_porespy = []
-input_poresize_porespy = "..\\data\\pore_size_distribution\\Datensatz_PU-Schaum_30ppi_PoreSpy_pore_size_distribution.txt"
+#input_poresize_porespy = "..\\data\\pore_size_distribution\\Datensatz_PU-Schaum_30ppi_PoreSpy_pore_size_distribution.txt"
+input_poresize_porespy = "..\\data\\pore_size_distribution\\test_output.txt"
 with open(input_poresize_porespy, "r") as file:
     for line in file:
         parts = line.strip().split("\t")
@@ -103,16 +104,24 @@ p_strutwidth_porespy = np.polyfit(x_strutwidth_porespy, y_strutwidth_porespy, de
 x_strutwidth_porespy_fit = np.linspace(min(x_strutwidth_porespy), max(x_strutwidth_porespy), 100)
 y_strutwidth_porespy_fit = np.polyval(p_strutwidth_porespy, x_strutwidth_porespy_fit)
     
-
+'''
 # Plotte die Bar plots
 plt.bar(x_poresize_ctan, y_poresize_ctan, color="blue", label="CTan")
 plt.bar(x_poresize_fiji, y_poresize_fiji, color="orange", label="fiji")
 plt.bar(x_poresize_porespy, y_poresize_porespy, color="green", label="PoreSpy")
+'''
 
+# Test
+plt.plot(x_poresize_ctan, y_poresize_ctan, color="blue", label="CTan", linestyle='--')
+plt.plot(x_poresize_fiji, y_poresize_fiji, color="orange", label="fiji", linestyle='--')
+plt.plot(x_poresize_porespy, y_poresize_porespy, color="green", label="PoreSpy", linestyle='--')
+
+'''
 # Plotte Polynome
 plt.plot(x_poresize_ctan_fit, y_poresize_ctan_fit, color="blue")
 plt.plot(x_poresize_fiji_fit, y_poresize_fiji_fit, color="orange")
 plt.plot(x_poresize_porespy_fit, y_poresize_porespy_fit, color="green")
+'''
 
 plt.title("Barplot of poresize", fontsize=20)
 plt.xlabel("Pore Diameter [pixel]", fontsize=18)  # X-axis label
